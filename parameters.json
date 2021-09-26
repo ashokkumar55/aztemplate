@@ -1,0 +1,71 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "centralindia"
+        },
+        "networkInterfaceName": {
+            "value": "ubuntu01912"
+        },
+        "enableAcceleratedNetworking": {
+            "value": true
+        },
+        "networkSecurityGroupName": {
+            "value": "ubuntu01-nsg"
+        },
+        "networkSecurityGroupRules": {
+            "value": [
+                {
+                    "name": "SSH",
+                    "properties": {
+                        "priority": 300,
+                        "protocol": "TCP",
+                        "access": "Allow",
+                        "direction": "Inbound",
+                        "sourceAddressPrefix": "*",
+                        "sourcePortRange": "*",
+                        "destinationAddressPrefix": "*",
+                        "destinationPortRange": "22"
+                    }
+                }
+            ]
+        },
+        "subnetName": {
+            "value": "default"
+        },
+        "virtualNetworkId": {
+            "value": "/subscriptions/7eac8bbf-b000-4a5a-9351-f6dea75efd0d/resourceGroups/IaC_Test/providers/Microsoft.Network/virtualNetworks/Iac_Test-Vnet"
+        },
+        "publicIpAddressName": {
+            "value": "ubuntu01-ip"
+        },
+        "publicIpAddressType": {
+            "value": "Dynamic"
+        },
+        "publicIpAddressSku": {
+            "value": "Basic"
+        },
+        "virtualMachineName": {
+            "value": "ubuntu01"
+        },
+        "virtualMachineComputerName": {
+            "value": "ubuntu01"
+        },
+        "virtualMachineRG": {
+            "value": "IaC_Test"
+        },
+        "osDiskType": {
+            "value": "StandardSSD_LRS"
+        },
+        "virtualMachineSize": {
+            "value": "Standard_D2s_v3"
+        },
+        "adminUsername": {
+            "value": "alchemist"
+        },
+        "adminPassword": {
+            "value": null
+        }
+    }
+}
