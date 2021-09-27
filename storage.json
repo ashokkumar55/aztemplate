@@ -2,8 +2,7 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "IaC_Test_storageaccountType": {
-            "type": "string",
+        "test01Type": {
             "defaultValue": "Standard_LRS",
             "allowedValues": [
                 "Standard_LRS",
@@ -11,25 +10,26 @@
                 "Standard_GRS",
                 "Standard_RAGRS",
                 "Premium_LRS"
-            ]
+            ],
+            "type": "String"
         }
+    },
+    "variables": {
+        "test01Name": "[concat('test02', uniqueString(resourceGroup().id))]"
     },
     "resources": [
         {
-            "name": "[variables('IaC_Test_storageaccountName')]",
             "type": "Microsoft.Storage/storageAccounts",
-            "location": "[resourceGroup().location]",
             "apiVersion": "2015-06-15",
+            "name": "[variables('test01Name')]",
+            "location": "[resourceGroup().location]",
             "dependsOn": [],
             "tags": {
-                "displayName": "IaC_Test_storageaccount"
+                "displayName": "test01"
             },
             "properties": {
-                "accountType": "[parameters('IaC_Test_storageaccountType')]"
+                "accountType": "[parameters('test01Type')]"
             }
         }
-    ],
-    "variables": {
-        "IaC_Test_storageaccountName": "[concat('IaC_Test_storageaccount', uniqueString(resourceGroup().id))]"
-    }
+    ]
 }
